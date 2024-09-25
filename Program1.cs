@@ -9,23 +9,34 @@ namespace Employee_Wage1
     class Program
     {
         public const int IS_PRESENT = 1;
+        public const int IS_PART_TIME = 2;
         public const int WAGE_PER_HOUR = 20;
         public const int FULL_DAY_HOURS = 8;
+        public const int PART_TIME_HOURS = 4;
 
         static void Main(string[] args)
         {
             Random random = new Random();
-            int attendance = random.Next(0, 2);
+            int attendance = random.Next(0, 3);
 
+            int hoursWorked = 0;
             if (attendance == IS_PRESENT)
             {
-                int dailyWage = WAGE_PER_HOUR * FULL_DAY_HOURS;
-                Console.WriteLine("Employee is Present, Daily Wage is: " + dailyWage);
+                hoursWorked = FULL_DAY_HOURS;
+                Console.WriteLine("Employee is Present for Full Time");
+            }
+            else if (attendance == IS_PART_TIME)
+            {
+                hoursWorked = PART_TIME_HOURS;
+                Console.WriteLine("Employee is Present for Part Time");
             }
             else
             {
-                Console.WriteLine("Employee is Absent, Daily Wage is: 0");
+                Console.WriteLine("Employee is Absent");
             }
+
+            int dailyWage = WAGE_PER_HOUR * hoursWorked;
+            Console.WriteLine("Daily Wage is: " + dailyWage);
         }
     }
 }
