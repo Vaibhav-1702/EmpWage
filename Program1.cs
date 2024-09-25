@@ -20,19 +20,19 @@ namespace Employee_Wage1
             int attendance = random.Next(0, 3);
 
             int hoursWorked = 0;
-            if (attendance == IS_PRESENT)
+            switch (attendance)
             {
-                hoursWorked = FULL_DAY_HOURS;
-                Console.WriteLine("Employee is Present for Full Time");
-            }
-            else if (attendance == IS_PART_TIME)
-            {
-                hoursWorked = PART_TIME_HOURS;
-                Console.WriteLine("Employee is Present for Part Time");
-            }
-            else
-            {
-                Console.WriteLine("Employee is Absent");
+                case IS_PRESENT:
+                    hoursWorked = FULL_DAY_HOURS;
+                    Console.WriteLine("Employee is Present for Full Time");
+                    break;
+                case IS_PART_TIME:
+                    hoursWorked = PART_TIME_HOURS;
+                    Console.WriteLine("Employee is Present for Part Time");
+                    break;
+                default:
+                    Console.WriteLine("Employee is Absent");
+                    break;
             }
 
             int dailyWage = WAGE_PER_HOUR * hoursWorked;
