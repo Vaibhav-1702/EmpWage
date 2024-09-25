@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Employee_Wage1
 {
-    class Program
+    class EmployeeWageCalculator
     {
         public const int IS_PRESENT = 1;
         public const int IS_PART_TIME = 2;
@@ -16,7 +16,7 @@ namespace Employee_Wage1
         public const int WORKING_DAYS_LIMIT = 20;
         public const int WORKING_HOURS_LIMIT = 100;
 
-        static void Main(string[] args)
+        public int CalculateEmployeeWage()
         {
             int totalWage = 0;
             int totalHoursWorked = 0;
@@ -47,9 +47,17 @@ namespace Employee_Wage1
                 totalWage += dailyWage;
             }
 
+            return totalWage;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            EmployeeWageCalculator employeeWageCalculator = new EmployeeWageCalculator();
+            int totalWage = employeeWageCalculator.CalculateEmployeeWage();
             Console.WriteLine("Total Wage for the Month: " + totalWage);
-            Console.WriteLine("Total Hours Worked: " + totalHoursWorked);
-            Console.WriteLine("Total Working Days: " + totalWorkingDays);
         }
     }
 }
